@@ -26,14 +26,19 @@ if response.status_code == 200:
     
     for property in properties:
         title = property.find('h3', class_ = 'mb-1 pr-3 text-base font-semibold capitalize text-black')
-        price = property.find('div', class_='font-semibold leading-tight text-black text-xl.25 justify-start')
+        price_div = property.find('div', class_ = 'font-semibold leading-tight text-black text-xl.25 justify-start')
+        price = price_div.contents[0].strip()
+        # Extract the time period (e.g., "per week")
+        time_period = price_div.find('span', class_='text-slateGrey-500 text-sm font-normal self-center').get_text(strip=True)
+
         rooms = property.find('div', class_='data-test="bedroom"')
 
         
         property_list.append({
             'Title': title,
             'Price': price,
-            'Rooms': rooms
+            'Rent_frequency': time_period,
+            'Rooms': rooms,
         #   'Price': price
         })
     
