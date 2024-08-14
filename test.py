@@ -20,7 +20,7 @@ if response.status_code == 200:
     
     # Extract data - this part will depend on the specific structure of the page
     # For demonstration, let's assume we're extracting property titles and prices
-    properties = soup.find_all('div', class_='tile__listing-details md:border-slateGrey-200 md:border-b md:pb-4')
+    properties = soup.find_all('a', class_='ember-view block h-full py-6 px-3 md:px-6 text-slateGrey-500')
 
     property_list = []
     
@@ -34,6 +34,10 @@ if response.status_code == 200:
         time_period = price_div.find('span', class_='text-slateGrey-500 text-sm font-normal self-center').get_text(strip=True)
 
         rooms = property.find('div', class_='data-test="bedroom"')
+        # Extract the href attribute (link)
+        link = property.get('href')
+        base_url = "https://www.realestate.co.nz"
+        full_link = base_url + link        
 
         
         property_list.append({
@@ -41,6 +45,8 @@ if response.status_code == 200:
             'Price': price,
             'Rent_frequency': time_period,
             'Rooms': rooms,
+            'Link': link,
+            'Full_link': full_link
         #   'Price': price
         })
     
@@ -52,4 +58,7 @@ if response.status_code == 200:
     
 else:
     print(f"Failed to retrieve data. Status code: {response.status_code}")
+    
+    
+
 
