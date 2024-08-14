@@ -25,7 +25,9 @@ if response.status_code == 200:
     property_list = []
     
     for property in properties:
-        title = property.find('h3', class_ = 'mb-1 pr-3 text-base font-semibold capitalize text-black')
+        address_element = property.find('h3', class_='mb-1 pr-3 text-base font-semibold capitalize text-black')
+        address = address_element.get_text(strip=True)
+
         price_div = property.find('div', class_ = 'font-semibold leading-tight text-black text-xl.25 justify-start')
         price = price_div.contents[0].strip()
         # Extract the time period (e.g., "per week")
@@ -35,7 +37,7 @@ if response.status_code == 200:
 
         
         property_list.append({
-            'Title': title,
+            'Address': address,
             'Price': price,
             'Rent_frequency': time_period,
             'Rooms': rooms,
