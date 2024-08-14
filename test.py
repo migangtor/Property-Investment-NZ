@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # Define the URL for OneRoof NZ
-url = 'https://www.oneroof.co.nz/search/houses-for-sale/suburb_mount-wellington-auckland-city-2583_page_1'
+url = 'https://www.realestate.co.nz/residential/rental/canterbury/christchurch-city'
 
 # Set headers to mimic a real browser visit
 headers = {
@@ -20,17 +20,20 @@ if response.status_code == 200:
     
     # Extract data - this part will depend on the specific structure of the page
     # For demonstration, let's assume we're extracting property titles and prices
-    properties = soup.find_all('div', class_='space-y-8 flex flex-col justify-center flex-1 lg:space-y-10')
-    
+    properties = soup.find_all('div', class_='tile__listing-details md:border-slateGrey-200 md:border-b md:pb-4')
+
     property_list = []
     
     for property in properties:
-        title = property.find('address').get_text(strip=True)
-        #price = property.find('div', class_='PropertyCard__Price').get_text(strip=True)
+        title = property.find('h3', class_ = 'mb-1 pr-3 text-base font-semibold capitalize text-black')
+        price = property.find('div', class_='font-semibold leading-tight text-black text-xl.25 justify-start')
+        rooms = property.find('div', class_='data-test="bedroom"')
+
         
         property_list.append({
-            'Title': title
-        #,
+            'Title': title,
+            'Price': price,
+            'Rooms': rooms
         #   'Price': price
         })
     
