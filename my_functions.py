@@ -1,5 +1,7 @@
 
 def extract_data_by_page_rs (base_url, page_no):
+    import requests
+    from bs4 import BeautifulSoup
     
     property_list = []
     for page in range(1, page_no + 1):
