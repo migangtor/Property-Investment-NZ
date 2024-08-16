@@ -2,6 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
+
+
+
+
 # Define the URL for OneRoof NZ
 url = 'https://www.realestate.co.nz/residential/rental/canterbury/christchurch-city'
 
