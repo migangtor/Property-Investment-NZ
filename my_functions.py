@@ -1,7 +1,10 @@
 
+
+
 def extract_data_by_page_rs (base_url, page_no):
     import requests
     from bs4 import BeautifulSoup
+    import pandas as pd
     
     property_list = []
     for page in range(1, page_no + 1):
@@ -56,7 +59,7 @@ def extract_data_by_page_rs (base_url, page_no):
         else:
             print(f"Failed to retrieve data. Status code: {response.status_code}")
     # Convert the list of properties to a DataFrame
-    df = pd.DataFrame(property_list)
-    return df
+    
+    return property_list
             
 

@@ -31,3 +31,4 @@ else:
 from my_functions import extract_data_by_page_rs
 
 extract_data_by_page_rs(url,page_no)
+df = pd.DataFrame(property_list)
