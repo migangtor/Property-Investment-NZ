@@ -49,14 +49,9 @@ def extract_data_by_page_rs (base_url, page_no):
                 #   'Price': price
                 })
             
-            # Convert the list of properties to a DataFrame
-            df = pd.DataFrame(property_list)
-            
-            # Display the DataFrame
-            print(df)
-            
         else:
             print(f"Failed to retrieve data. Status code: {response.status_code}")
-            
+    # Convert the list of properties to a DataFrame
+    df = pd.DataFrame(property_list)
             
 
