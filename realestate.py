@@ -24,7 +24,7 @@ a_tag = soup.find('a', class_='paginated-items__page-number text-primaryBlue-500
 # Extract the text content
 if a_tag:
     page_no = a_tag.get_text(strip=True)
-    print(f"Extracted Value: {value}")
+    print(f"Extracted Value: {page_no}")
 else:
     print("Element not found")
 

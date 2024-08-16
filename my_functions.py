@@ -1,9 +1,11 @@
 
 def extract_data_by_page_rs (base_url, page_no):
-    for page in range(1, total_pages + 1)
+    
+    property_list = []
+    for page in range(1, page_no + 1):
         # Construct the URL for the current page
         url = f"{base_url}?page={page}"
-        property_list = []
+        
         # Set headers to mimic a real browser visit
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -53,5 +55,6 @@ def extract_data_by_page_rs (base_url, page_no):
             print(f"Failed to retrieve data. Status code: {response.status_code}")
     # Convert the list of properties to a DataFrame
     df = pd.DataFrame(property_list)
+    return df
             
 
