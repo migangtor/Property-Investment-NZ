@@ -27,3 +27,7 @@ if a_tag:
     print(f"Extracted Value: {value}")
 else:
     print("Element not found")
+
+from my_functions import extract_data_by_page_rs
+
+extract_data_by_page_rs()
