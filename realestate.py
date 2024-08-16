@@ -23,11 +23,11 @@ a_tag = soup.find('a', class_='paginated-items__page-number text-primaryBlue-500
 
 # Extract the text content
 if a_tag:
-    value = a_tag.get_text(strip=True)
+    page_no = a_tag.get_text(strip=True)
     print(f"Extracted Value: {value}")
 else:
     print("Element not found")
 
 from my_functions import extract_data_by_page_rs
 
-extract_data_by_page_rs()
+extract_data_by_page_rs(url,page_no)
