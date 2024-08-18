@@ -10,15 +10,15 @@ def extract_data_by_page_rs (base_url, page_no):
     for page in range(1, page_no + 1):
         print(page)
         # Construct the URL for the current page
-        url = f"{base_url}?page={page}"
-        print(url)
+        url_it= f"{base_url}?page={page}"
+        print(url_it)
         # Set headers to mimic a real browser visit
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
 
         # Send a GET request to the website
-        response = requests.get(url, headers=headers)
+        response = requests.get(url_it, headers=headers)
 
         # Check if the request was successful
         if response.status_code == 200:
@@ -43,8 +43,8 @@ def extract_data_by_page_rs (base_url, page_no):
                 rooms = property.find('div', class_='data-test="bedroom"')
                 # Extract the href attribute (link)
                 link = property.get('href')
-                base_url = "https://www.realestate.co.nz"
-                full_link = base_url + link        
+                root= "https://www.realestate.co.nz"
+                full_link = root + link        
 
                 
                 property_list.append({
