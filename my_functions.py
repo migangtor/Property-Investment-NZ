@@ -8,9 +8,10 @@ def extract_data_by_page_rs (base_url, page_no):
     
     property_list = []
     for page in range(1, page_no + 1):
+        print(page)
         # Construct the URL for the current page
         url = f"{base_url}?page={page}"
-        
+        print(url)
         # Set headers to mimic a real browser visit
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
